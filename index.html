@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Inicio - Mundo Animal</title>
-    <link rel="shourcut icon" type="imagen x - icon" href="img/Mundo Animal.ico">
+    <link rel="shourcut icon" type="imagen x - icon" href="img/logo-final.ico">
     <meta name="description" content="MUNDO ANIMAL, un juego para aprender todo sobre los animales. ¡Aprende Jugando!">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -109,6 +109,7 @@
         <footer class="text-center text-gray-400 text-sm p-4 bg-gray-900/80 mt-auto">
             <div class="contenedor-footer">
                 <p>&copy; 2025 Mundo Animal S.A. Todos los derechos reservados.</p>
+                <p id="contador-visitas" class="mt-1"></p> 
                 <div class="mt-1 space-x-3">
                     <a href="#" class="hover:text-green-400">Política de Privacidad</a>
                     <span class="text-gray-600">|</span>
@@ -177,15 +178,7 @@
             updateCarousel();
         });
 
-        window.onload = function() {
-            slidesContainer.style.width = `${totalSlides * 100}%`;
-            slides.forEach(slide => {
-                slide.style.width = `${100 / totalSlides}%`;
-            });
-            createDots();
-            updateCarousel();
-        };
-        
+        // Lógica del auto-slide
         let autoSlide = setInterval(() => {
             nextBtn.click();
         }, 5000);
@@ -199,6 +192,49 @@
                 nextBtn.click();
             }, 5000);
         });
+
+        // ==========================================================
+        // NUEVA LÓGICA DEL CONTADOR DE VISITAS
+        // ==========================================================
+        function contarVisita() {
+            // 1. Obtener el elemento donde se mostrará el contador
+            const contadorElement = document.getElementById('contador-visitas');
+            if (!contadorElement) return;
+
+            // 2. Obtener el valor actual de visitas de localStorage
+            let visitas = localStorage.getItem('visitasMundoAnimal');
+
+            // 3. Verificar si es la primera visita
+            if (visitas === null || isNaN(parseInt(visitas))) {
+                visitas = 1;
+            } else {
+                // 4. Si ya existe, incrementar el valor
+                visitas = parseInt(visitas) + 1;
+            }
+
+            // 5. Guardar el nuevo valor en localStorage
+            localStorage.setItem('visitasMundoAnimal', visitas);
+
+            // 6. Mostrar el mensaje en la página
+            contadorElement.textContent = `¡Has visitado esta página ${visitas} veces!`;
+        }
+
+        // Modificamos window.onload para que ejecute ambas lógicas: carrusel y contador
+        window.onload = function() {
+            // Lógica del carrusel
+            slidesContainer.style.width = `${totalSlides * 100}%`;
+            slides.forEach(slide => {
+                slide.style.width = `${100 / totalSlides}%`;
+            });
+            createDots();
+            updateCarousel();
+            
+            // Ejecutar el contador de visitas
+            contarVisita();
+        };
+        // ==========================================================
+        // FIN NUEVA LÓGICA DEL CONTADOR DE VISITAS
+        // ==========================================================
 
     </script>
 </body>
