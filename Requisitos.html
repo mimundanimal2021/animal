@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Requisitos - Mundo Animal</title>
+    <meta name="description" content="Requisitos del sistema para el juego Mundo Animal.">
+    <!-- Carga de Tailwind CSS para un diseño moderno y responsivo -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-image: url('MABG.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center center;
+            background-size: cover;
+            min-height: 100vh;
+        }
+
+        .content-bg {
+            background-color: rgba(0, 0, 0, 0.75);
+        }
+
+        /* Estilo para listas dentro del contenido */
+        ul {
+            list-style: disc;
+            padding-left: 1.5rem;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body class="text-white">
+
+    <!-- Contenedor Principal (Flexbox para centrar y estructurar) -->
+    <div class="min-h-screen flex flex-col">
+
+        <!-- Navegación Responsiva (Acentos en VERDE) -->
+        <nav class="bg-gray-900/80 p-4 shadow-lg sticky top-0 z-10">
+            <div class="flex flex-wrap justify-center space-x-2 sm:space-x-6 text-lg font-medium">
+                <a href="index.html" class="hover:text-green-400 transition duration-150 p-2 rounded-lg">Inicio</a>
+                <!-- Enlace activo en verde -->
+                <a href="Requisitos.html" class="text-green-400 font-bold border-b-2 border-green-400 p-2 rounded-lg">Requisitos</a>
+                <a href="manual.html" class="hover:text-green-400 transition duration-150 p-2 rounded-lg">Manual</a>
+                <a href="videos.html" class="hover:text-green-400 transition duration-150 p-2 rounded-lg">Videos</a>
+                <a href="Descargar.html" class="hover:text-green-400 transition duration-150 p-2 rounded-lg">Descargar</a>
+                <a href="contacto.html" class="hover:text-green-400 transition duration-150 p-2 rounded-lg">Contacto</a>
+            </div>
+        </nav>
+
+        <!-- Contenido Principal -->
+        <main class="flex-grow p-4 sm:p-8 flex justify-center">
+            
+            <div class="content-bg max-w-4xl w-full p-6 md:p-10 rounded-2xl shadow-2xl space-y-8">
+                
+                <div class="text-center">
+                    <img src="img/logo final2.png" alt="Logo Mundo Animal" title="Mundo Animal" class="h-24 mx-auto mb-4">
+                    <h1 class="text-4xl sm:text-5xl font-extrabold text-green-400 mb-2">
+                        ¡Prepárate para Jugar!
+                    </h1>
+                    <p class="text-xl text-gray-300">
+                        Requisitos del Sistema 💻
+                    </p>
+                </div>
+
+                <!-- Sección de Requisitos -->
+                <div class="text-left text-gray-200 text-lg space-y-6">
+                    <p>
+                        Bienvenido/a a la experiencia. Para que tu aventura sea fluida y disfrutes de cada detalle de nuestro juego, asegúrate de que tu equipo cumple con las siguientes especificaciones técnicas.
+                    </p>
+
+                    <h2 class="text-3xl font-bold text-green-300 border-b border-gray-700 pb-2">
+                        Requisitos Mínimos (Para una experiencia básica)
+                    </h2>
+                    <ul class="space-y-2 ml-4">
+                        <li><strong>Sistema Operativo:</strong> Windows 7 o superior / macOS X 10.10 o superior.</li>
+                        <li><strong>Procesador:</strong> Dual Core 1.8 GHz o superior.</li>
+                        <li><strong>Memoria RAM:</strong> 2 GB.</li>
+                        <li><strong>Espacio en Disco:</strong> 500 MB de espacio disponible.</li>
+                        <li><strong>Gráficos:</strong> Tarjeta gráfica compatible con DirectX 9.0c.</li>
+                    </ul>
+
+                    <h2 class="text-3xl font-bold text-green-300 border-b border-gray-700 pb-2 pt-4">
+                        Requisitos Recomendados (Para la mejor experiencia)
+                    </h2>
+                    <ul class="space-y-2 ml-4">
+                        <li><strong>Sistema Operativo:</strong> Windows 10 (64-bit) / macOS Big Sur o superior.</li>
+                        <li><strong>Procesador:</strong> Quad Core 2.5 GHz o superior.</li>
+                        <li><strong>Memoria RAM:</strong> 4 GB o más.</li>
+                        <li><strong>Espacio en Disco:</strong> 1 GB de espacio disponible (para futuras expansiones).</li>
+                        <li><strong>Gráficos:</strong> Tarjeta dedicada con 512 MB de VRAM (OpenGL 3.0+).</li>
+                    </ul>
+
+                    <p class="pt-4 text-green-200 italic">
+                        ¡Asegúrate de tener tus drivers actualizados! Si tienes algún problema, visita la sección de Contacto.
+                    </p>
+                </div>
+
+            </div>
+
+        </main>
+
+        <!-- Pie de página simple -->
+        <footer class="text-center text-gray-400 text-sm p-4 bg-gray-900/80 mt-auto">
+            <div class="contenedor-footer">
+                <p>&copy; 2025 Mundo Animal S.A. Todos los derechos reservados.</p>
+                <div class="mt-1 space-x-3">
+                    <a href="#" class="hover:text-green-400">Política de Privacidad</a>
+                    <span class="text-gray-600">|</span>
+                    <a href="#" class="hover:text-green-400">Términos de Uso</a>
+                    <span class="text-gray-600">|</span>
+                    <a href="contacto.html" class="hover:text-green-400">Contacto</a>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+</body>
+</html>
