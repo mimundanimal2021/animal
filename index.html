@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <title>Inicio - Mundo Animal</title>
     <meta name="description" content="MUNDO ANIMAL, un juego para aprender todo sobre los animales. ¡Aprende Jugando!">
-    <!-- Carga de Tailwind CSS para un diseño moderno y responsivo -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
@@ -31,13 +30,10 @@
 
 <body class="text-white">
 
-    <!-- Contenedor Principal (Flexbox para centrar y estructurar) -->
     <div class="min-h-screen flex flex-col">
 
-        <!-- Navegación Responsiva (Acentos en VERDE) -->
         <nav class="bg-gray-900/80 p-4 shadow-lg sticky top-0 z-10">
             <div class="flex flex-wrap justify-center space-x-2 sm:space-x-6 text-lg font-medium">
-                <!-- Enlace activo en verde -->
                 <a href="index.html" class="text-green-400 font-bold border-b-2 border-green-400 p-2 rounded-lg">Inicio</a>
                 <a href="Requisitos.html" class="hover:text-green-400 transition duration-150 p-2 rounded-lg">Requisitos</a>
                 <a href="manual.html" class="hover:text-green-400 transition duration-150 p-2 rounded-lg">Manual</a>
@@ -47,21 +43,17 @@
             </div>
         </nav>
 
-        <!-- Contenido Principal -->
         <main class="flex-grow p-4 sm:p-8 flex justify-center">
             
             <div class="content-bg max-w-4xl w-full p-6 md:p-10 rounded-2xl shadow-2xl">
                 
-                <!-- Logo y Bienvenida -->
                 <div class="text-center mb-8">
-                    <!-- Aquí se asume que 'img/logo final2.png' es accesible -->
-                    <img src="img/logo final2.png" alt="Logo Mundo Animal" title="Mundo Animal" class="h-24 mx-auto mb-4">
+                    <img src="img/logo final2.png" alt="Logo Mundo Animal" title="Mundo Animal" class="h-48 sm:h-64 w-auto mx-auto mb-4">
                     <h1 class="text-5xl sm:text-6xl font-extrabold text-green-400 mb-2">
                         ¡BIENVENIDOS!
                     </h1>
                 </div>
 
-                <!-- Sección de Artículos -->
                 <article class="text-left space-y-4 text-gray-200 text-lg">
                     <p>
                         <strong class="text-green-300">a MUNDO ANIMAL: ¡Aprende Jugando! 🐾</strong>
@@ -70,7 +62,8 @@
                         diseñado específicamente para que niños y niñas de 5 a 12 años descubran el 
                         increíble reino animal. Es la herramienta perfecta para combinar diversión y conocimiento.
                     </p>
-                    <p>
+                    
+                    <p class="bg-gray-800/70 p-4 rounded-xl shadow-lg border-l-4 border-green-500 my-6 text-green-300 font-semibold">
                         Presentamos Mundo Animal, el juego perfecto para niños. 
                         Incluye más de 20 imágenes de animales para comenzar la diversión. 
                         Lo mejor es que su contenido es actualizable: ¡expande el juego cuando quieras! 
@@ -85,23 +78,18 @@
                     </p>
                 </article>
 
-                <!-- Título de Galería -->
                 <h2 class="text-3xl font-bold text-green-400 mt-12 mb-6 border-b border-gray-700 pb-2">
                     ¡Capturas del juego!
                 </h2>
 
-                <!-- Carrusel Simple de Imágenes (Reemplazo de FlexSlider) -->
                 <div id="image-carousel" class="relative w-full max-w-3xl mx-auto overflow-hidden rounded-xl shadow-xl">
-                    <!-- Contenedor de las diapositivas -->
                     <div id="slides" class="flex transition-transform duration-500 ease-in-out">
-                        <!-- Las rutas de imagen originales se han mantenido. Se ha quitado la clase 'w-full'. -->
-                        <img src="img/Galeria/Imagen 1.jpg" alt="Captura de juego 1" class="flex-shrink-0 object-cover aspect-video">
-                        <img src="img/Galeria/Imagen 2.jpg" alt="Captura de juego 2" class="flex-shrink-0 object-cover aspect-video">
-                        <img src="img/Galeria/Imagen 3.jpg" alt="Captura de juego 3" class="flex-shrink-0 object-cover aspect-video">
-                        <img src="img/Galeria/Imagen 4.jpg" alt="Captura de juego 4" class="flex-shrink-0 object-cover aspect-video">
+                        <img src="img/Galeria/Imagen 1.jpg" alt="Captura de juego 1" class="flex-shrink-0 object-cover aspect-video w-full">
+                        <img src="img/Galeria/Imagen 2.jpg" alt="Captura de juego 2" class="flex-shrink-0 object-cover aspect-video w-full">
+                        <img src="img/Galeria/Imagen 3.jpg" alt="Captura de juego 3" class="flex-shrink-0 object-cover aspect-video w-full">
+                        <img src="img/Galeria/Imagen 4.jpg" alt="Captura de juego 4" class="flex-shrink-0 object-cover aspect-video w-full">
                     </div>
 
-                    <!-- Botones de Navegación -->
                     <button id="prev-btn" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-900/50 hover:bg-green-500/70 text-white p-3 rounded-full transition duration-300">
                         &#10094;
                     </button>
@@ -109,17 +97,14 @@
                         &#10095;
                     </button>
                     
-                    <!-- Indicadores de posición (puntos) -->
                     <div id="dots" class="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
-                        <!-- Los puntos se generarán con JavaScript -->
-                    </div>
+                        </div>
                 </div>
 
             </div>
 
         </main>
 
-        <!-- Pie de página simple -->
         <footer class="text-center text-gray-400 text-sm p-4 bg-gray-900/80 mt-auto">
             <div class="contenedor-footer">
                 <p>&copy; 2025 Mundo Animal S.A. Todos los derechos reservados.</p>
@@ -138,6 +123,7 @@
     <script>
         // Lógica del Carrusel (Slider) implementada en JavaScript puro
         const slidesContainer = document.getElementById('slides');
+        const carousel = document.getElementById('image-carousel');
         const prevBtn = document.getElementById('prev-btn');
         const nextBtn = document.getElementById('next-btn');
         const dotsContainer = document.getElementById('dots');
@@ -149,17 +135,11 @@
         
         // Función para actualizar la posición del carrusel
         function updateCarousel() {
-            // CORRECCIÓN CLAVE: El desplazamiento ahora se divide por el número total de diapositivas (totalSlides).
-            // Esto asegura que el contenedor se desplace exactamente por el ancho de una diapositiva
-            // (100% / totalSlides) cada vez.
             const offset = -currentIndex * (100 / totalSlides);
             slidesContainer.style.transform = `translateX(${offset}%)`;
-            
-            // Actualiza los indicadores (puntos)
             updateDots();
         }
 
-        // Función para crear y actualizar los puntos de navegación
         function createDots() {
             dotsContainer.innerHTML = '';
             slides.forEach((_, index) => {
@@ -186,7 +166,6 @@
             });
         }
         
-        // Navegación con botones
         prevBtn.addEventListener('click', () => {
             currentIndex = (currentIndex > 0) ? currentIndex - 1 : totalSlides - 1;
             updateCarousel();
@@ -197,25 +176,28 @@
             updateCarousel();
         });
 
-        // Inicializar el carrusel y los puntos
         window.onload = function() {
-            slidesContainer.style.display = 'flex'; // Asegurar que sea flex para el translateX
-            // El width total del contenedor de slides debe ser el número de slides * 100%
             slidesContainer.style.width = `${totalSlides * 100}%`;
-            
-            // Aseguramos que cada diapositiva ocupe 1/N del ancho total del contenedor de diapositivas
             slides.forEach(slide => {
                 slide.style.width = `${100 / totalSlides}%`;
             });
-
             createDots();
-            updateCarousel(); // Mostrar la primera diapositiva
+            updateCarousel();
         };
-
-        // Función de Autoplay (Opcional)
-        setInterval(() => {
+        
+        let autoSlide = setInterval(() => {
             nextBtn.click();
-        }, 5000); // Cambia de diapositiva cada 5 segundos
+        }, 5000);
+
+        carousel.addEventListener('mouseenter', () => {
+            clearInterval(autoSlide);
+        });
+
+        carousel.addEventListener('mouseleave', () => {
+            autoSlide = setInterval(() => {
+                nextBtn.click();
+            }, 5000);
+        });
 
     </script>
 </body>

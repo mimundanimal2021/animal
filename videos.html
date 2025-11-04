@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <title>Videos - Mundo Animal</title>
     <meta name="description" content="Videos y tutoriales del juego Mundo Animal.">
-    <!-- Carga de Tailwind CSS para un diseño moderno y responsivo -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
@@ -47,29 +46,25 @@
 
 <body class="text-white">
 
-    <!-- Contenedor Principal (Flexbox para centrar y estructurar) -->
     <div class="min-h-screen flex flex-col">
 
-        <!-- Navegación Responsiva (Acentos en VERDE) -->
         <nav class="bg-gray-900/80 p-4 shadow-lg sticky top-0 z-10">
             <div class="flex flex-wrap justify-center space-x-2 sm:space-x-6 text-lg font-medium">
                 <a href="index.html" class="hover:text-green-400 transition duration-150 p-2 rounded-lg">Inicio</a>
                 <a href="Requisitos.html" class="hover:text-green-400 transition duration-150 p-2 rounded-lg">Requisitos</a>
                 <a href="manual.html" class="hover:text-green-400 transition duration-150 p-2 rounded-lg">Manual</a>
-                <!-- Enlace activo en verde -->
                 <a href="videos.html" class="text-green-400 font-bold border-b-2 border-green-400 p-2 rounded-lg">Videos</a>
                 <a href="Descargar.html" class="hover:text-green-400 transition duration-150 p-2 rounded-lg">Descargar</a>
                 <a href="contacto.html" class="hover:text-green-400 transition duration-150 p-2 rounded-lg">Contacto</a>
             </div>
         </nav>
 
-        <!-- Contenido Principal -->
         <main class="flex-grow p-4 sm:p-8 flex justify-center">
             
             <div class="content-bg max-w-4xl w-full p-6 md:p-10 rounded-2xl shadow-2xl space-y-8">
                 
                 <div class="text-center">
-                    <img src="img/logo final2.png" alt="Logo Mundo Animal" title="Mundo Animal" class="h-24 mx-auto mb-4">
+                    <img src="img/logo final2.png" alt="Logo Mundo Animal" title="Mundo Animal" class="h-48 sm:h-64 w-auto mx-auto mb-4">
                     <h1 class="text-4xl sm:text-5xl font-extrabold text-green-400 mb-2">
                         VER VIDEOS
                     </h1>
@@ -78,14 +73,11 @@
                     </p>
                 </div>
 
-                <!-- Lista de Videos -->
                 <div class="grid grid-cols-1 gap-8 text-gray-200">
 
-                    <!-- Video 1: Inicio del Juego -->
                     <div class="space-y-3">
                         <h4 class="text-2xl font-semibold text-green-300">INICIO DEL JUEGO</h4>
                         <div class="video-container shadow-2xl">
-                            <!-- Placeholder de Iframe. Reemplaza 'VIDEO_ID_1' con el ID real de YouTube. -->
                             <iframe 
                                 src="https://www.youtube.com/embed/VIDEO_ID_1" 
                                 frameborder="0" 
@@ -98,11 +90,9 @@
                         </p>
                     </div>
 
-                    <!-- Video 2: Jugabilidad (Ejemplo) -->
                     <div class="space-y-3">
                         <h4 class="text-2xl font-semibold text-green-300">DEMOSTRACIÓN DE JUGABILIDAD</h4>
                         <div class="video-container shadow-2xl">
-                            <!-- Placeholder de Iframe. Reemplaza 'VIDEO_ID_2' con el ID real de YouTube. -->
                             <iframe 
                                 src="https://www.youtube.com/embed/VIDEO_ID_2" 
                                 frameborder="0" 
@@ -121,7 +111,6 @@
 
         </main>
 
-        <!-- Pie de página simple -->
         <footer class="text-center text-gray-400 text-sm p-4 bg-gray-900/80 mt-auto">
             <div class="contenedor-footer">
                 <p>&copy; 2025 Mundo Animal S.A. Todos los derechos reservados.</p>
