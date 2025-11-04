@@ -24,6 +24,15 @@
         .content-bg {
             background-color: rgba(0, 0, 0, 0.7); /* Ligeramente más opaco para mejor legibilidad */
         }
+
+        /* Estilo para las imágenes dentro de los botones de pack */
+        .pack-img {
+            height: 100px; /* Aumentamos aún más la altura de la imagen */
+            width: auto; /* Mantener la proporción */
+            margin-right: 18px; /* Un poco más de espacio entre la imagen y el texto */
+            vertical-align: middle; /* Alineación vertical con el texto */
+            border-radius: 8px; /* Ligeramente más redondeado */
+        }
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -70,6 +79,31 @@
                     (ULTIMA VERSION - descarga desde Google Drive)
                 </p>
 
+                <div class="mt-8 pt-6 border-t border-gray-700">
+                    <h3 class="text-xl font-extrabold text-yellow-400 mb-6">
+                        <span class="border-b-2 border-yellow-400 pb-1">PACKS DE EXPANSIÓN (Contenido Adicional)</span>
+                    </h3>
+                    
+                    <div class="space-y-4">
+                        <a href="https://drive.google.com/file/d/1Ejg_vX8S7hR5q9lY0d4m3kPz6fB2wA_O/view?usp=drive_link" target="_blank"
+                           class="block text-center p-4 bg-blue-700 text-white font-bold rounded-lg shadow-md hover:bg-blue-800 transition duration-300 transform hover:scale-105">
+                            <img src="img/orca.png" alt="Orca" class="pack-img inline-block">ANIMALES DEL OCÉANO 
+                        
+                        <a href="https://drive.google.com/file/d/1Ejg_vX8S7hR5q9lY0d4m3kPz6fB2wA_T/view?usp=drive_link" target="_blank"
+                           class="block text-center p-4 bg-yellow-700 text-white font-bold rounded-lg shadow-md hover:bg-yellow-800 transition duration-300 transform hover:scale-105">
+                            <img src="img/leon.png" alt="León" class="pack-img inline-block">ANIMALES DE LA TIERRA  
+                        </a>
+                        
+                        <a href="https://drive.google.com/file/d/1Ejg_vX8S7hR5q9lY0d4m3kPz6fB2wA_C/view?usp=drive_link" target="_blank"
+                           class="block text-center p-4 bg-sky-700 text-white font-bold rounded-lg shadow-md hover:bg-sky-800 transition duration-300 transform hover:scale-105">
+                            <img src="img/aguila.png" alt="Águila" class="pack-img inline-block"> ANIMALES DE EL CIELO 
+                        </a>
+                    </div>
+
+                    <p class="text-xs text-gray-500 mt-6">
+                        (Estos son contenidos opcionales para expandir la experiencia en la última versión del juego.)
+                    </p>
+                </div>
                 <div class="mt-8 pt-6 border-t border-gray-700">
                     <h3 class="text-xl font-bold text-gray-200 mb-4">Versiones Anteriores</h3>
                     <div class="space-y-3">
