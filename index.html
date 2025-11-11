@@ -25,11 +25,6 @@
         .content-bg {
             background-color: rgba(0, 0, 0, 0.75);
         }
-
-        /* Estilo para el contenedor de slides */
-        #slides {
-            width: 400%; /* Asegura espacio para 4 imágenes */
-        }
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -46,6 +41,7 @@
                 <a href="videos.html" class="hover:text-green-400 transition duration-150 p-2 rounded-lg">Videos</a>
                 <a href="Descargar.html" class="hover:text-green-400 transition duration-150 p-2 rounded-lg">Descargar</a>
                 <a href="contacto.html" class="hover:text-green-400 transition duration-150 p-2 rounded-lg">Contacto</a>
+                <a href="juego.html" class="hover:text-green-400 transition duration-150 p-2 rounded-lg">Juega</a>
             </div>
         </nav>
 
@@ -114,7 +110,8 @@
         <footer class="text-center text-gray-400 text-sm p-4 bg-gray-900/80 mt-auto">
             <div class="contenedor-footer">
                 <p>&copy; 2025 Mundo Animal S.A. Todos los derechos reservados.</p>
-                <p id="contador-visitas" class="mt-1"></p> <div class="mt-1 space-x-3">
+                <p id="contador-visitas" class="mt-1"></p> 
+                <div class="mt-1 space-x-3">
                     <a href="#" class="hover:text-green-400">Política de Privacidad</a>
                     <span class="text-gray-600">|</span>
                     <a href="#" class="hover:text-green-400">Términos de Uso</a>
@@ -141,7 +138,7 @@
         
         // Función para actualizar la posición del carrusel
         function updateCarousel() {
-            const offset = -currentIndex * 100; // Ahora movemos el 100%
+            const offset = -currentIndex * (100 / totalSlides);
             slidesContainer.style.transform = `translateX(${offset}%)`;
             updateDots();
         }
@@ -198,7 +195,7 @@
         });
 
         // ==========================================================
-        // LÓGICA DEL CONTADOR DE VISITAS (usando localStorage) 👁️‍🗨️
+        // NUEVA LÓGICA DEL CONTADOR DE VISITAS
         // ==========================================================
         function contarVisita() {
             // 1. Obtener el elemento donde se mostrará el contador
@@ -220,12 +217,12 @@
             localStorage.setItem('visitasMundoAnimal', visitas);
 
             // 6. Mostrar el mensaje en la página
-            contadorElement.textContent = `Has visitado esta página: ${visitas} veces. ¡Gracias por tu apoyo!`;
+            contadorElement.textContent = `¡Has visitado esta página ${visitas} veces!`;
         }
 
         // Modificamos window.onload para que ejecute ambas lógicas: carrusel y contador
         window.onload = function() {
-            // Ajuste del ancho del carrusel y de las diapositivas
+            // Lógica del carrusel
             slidesContainer.style.width = `${totalSlides * 100}%`;
             slides.forEach(slide => {
                 slide.style.width = `${100 / totalSlides}%`;
@@ -237,7 +234,7 @@
             contarVisita();
         };
         // ==========================================================
-        // FIN LÓGICA DEL CONTADOR DE VISITAS
+        // FIN NUEVA LÓGICA DEL CONTADOR DE VISITAS
         // ==========================================================
 
     </script>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Manual - Mundo Animal</title>
-    <link rel="shourcut icon" type="imagen x - icon" href="img/Mundo Animal.ico">
+    <link rel="shourcut icon" type="imagen x - icon" href="img/logo-final.ico">
     <meta name="description" content="Manual de usuario para el juego Mundo Animal.">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -23,15 +23,6 @@
         .content-bg {
             background-color: rgba(0, 0, 0, 0.75);
         }
-        
-        /* Estilo para la imagen del juego */
-        #imagen-juego {
-            max-height: 300px;
-            width: auto;
-            object-fit: contain;
-            margin: 0 auto;
-            border-radius: 8px;
-        }
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -48,6 +39,7 @@
                 <a href="videos.html" class="hover:text-green-400 transition duration-150 p-2 rounded-lg">Videos</a>
                 <a href="Descargar.html" class="hover:text-green-400 transition duration-150 p-2 rounded-lg">Descargar</a>
                 <a href="contacto.html" class="hover:text-green-400 transition duration-150 p-2 rounded-lg">Contacto</a>
+                <a href="juego.html" class="hover:text-green-400 transition duration-150 p-2 rounded-lg">Juega</a>
             </div>
         </nav>
 
@@ -89,50 +81,14 @@
                 <div class="text-center text-gray-400 pt-6">
                     <p>Usa los botones o los puntos para navegar por las pantallas del manual.</p>
                 </div>
-                
-                <hr class="border-gray-700 my-8">
 
-                <h2 class="text-3xl font-bold text-green-400 mt-12 mb-6 border-b border-gray-700 pb-2 text-center">
-                    ¡Pruébate! Adivina el Animal 🧠
-                </h2>
-
-                <div class="space-y-4 p-6 bg-gray-800/70 rounded-xl shadow-2xl text-center">
-                    <div class="flex justify-between items-center mb-4">
-                         <span class="text-lg font-semibold text-white">Puntaje: <span id="puntaje-actual" class="text-yellow-400 text-2xl">0</span></span>
-                         <span class="text-sm text-gray-400">Récord: <span id="record-puntaje">0</span></span>
-                    </div>
-
-                    <img id="imagen-juego" src="" alt="Animal a adivinar" class="w-full mx-auto aspect-video object-cover">
-                    
-                    <p id="pregunta-animal" class="text-xl font-semibold text-green-300 pt-4">
-                        </p>
-                    
-                    <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-x-4 sm:space-y-0 mt-4">
-                        <input type="text" id="respuesta-usuario" placeholder="Escribe el nombre del animal aquí..."
-                               class="p-3 w-full sm:w-80 rounded-lg text-gray-900 border border-green-500 focus:ring-2 focus:ring-green-400 focus:border-green-400 transition" autocomplete="off">
-                        
-                        <button id="btn-verificar"
-                                class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 w-full sm:w-auto">
-                            Verificar
-                        </button>
-                    </div>
-
-                    <p id="retroalimentacion" class="text-lg font-bold pt-2 min-h-[1.5rem]">
-                        </p>
-                    
-                    <button id="btn-siguiente"
-                            class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 hidden">
-                        Siguiente ➡️
-                    </button>
-                </div>
-                </div>
+            </div>
 
         </main>
 
         <footer class="text-center text-gray-400 text-sm p-4 bg-gray-900/80 mt-auto">
             <div class="contenedor-footer">
                 <p>&copy; 2025 Mundo Animal S.A. Todos los derechos reservados.</p>
-                <p id="contador-visitas" class="mt-1"></p> 
                 <div class="mt-1 space-x-3">
                     <a href="#" class="hover:text-green-400">Política de Privacidad</a>
                     <span class="text-gray-600">|</span>
@@ -146,23 +102,30 @@
     </div>
 
     <script>
-        // ==========================================================
-        // LÓGICA DEL CARRUSEL DEL MANUAL (EXISTENTE)
-        // ==========================================================
+        // Lógica del Carrusel (Slider) implementada en JavaScript puro, idéntica a index.html
         const slidesContainer = document.getElementById('slides');
         const prevBtn = document.getElementById('prev-btn');
         const nextBtn = document.getElementById('next-btn');
         const dotsContainer = document.getElementById('dots');
+        
+        // Obtener todas las diapositivas
         const slides = slidesContainer.querySelectorAll('img');
         const totalSlides = slides.length;
         let currentIndex = 0;
         
+        // Función para actualizar la posición del carrusel
         function updateCarousel() {
+            // CORRECCIÓN CLAVE: El desplazamiento ahora se divide por el número total de diapositivas (totalSlides).
+            // Esto asegura que el contenedor se desplace exactamente por el ancho de una diapositiva
+            // (100% / totalSlides) cada vez.
             const offset = -currentIndex * (100 / totalSlides);
             slidesContainer.style.transform = `translateX(${offset}%)`;
+            
+            // Actualiza los indicadores (puntos)
             updateDots();
         }
 
+        // Función para crear y actualizar los puntos de navegación
         function createDots() {
             dotsContainer.innerHTML = '';
             slides.forEach((_, index) => {
@@ -189,6 +152,7 @@
             });
         }
         
+        // Navegación con botones
         prevBtn.addEventListener('click', () => {
             currentIndex = (currentIndex > 0) ? currentIndex - 1 : totalSlides - 1;
             updateCarousel();
@@ -198,152 +162,22 @@
             currentIndex = (currentIndex < totalSlides - 1) ? currentIndex + 1 : 0;
             updateCarousel();
         });
-        
-        // ==========================================================
-        // BASE DE DATOS Y LÓGICA DEL JUEGO 🎮
-        // ==========================================================
-        const animales = [
-            // **IMPORTANTE: Asegúrate de que estas rutas de imagen sean correctas**
-            { imagen: "img/Galeria/Imagen 1.jpg", nombre: "tigre", pregunta: "¿Cuál es este felino rayado, conocido como el más grande del mundo?" },
-            { imagen: "img/Galeria/Imagen 2.jpg", nombre: "elefante", pregunta: "¿Quién tiene la trompa más larga y vive en la sabana?" },
-            { imagen: "img/Galeria/Imagen 3.jpg", nombre: "pinguino", pregunta: "¿Soy un ave que no vuela y vivo en el frío, caminando torpemente. ¿Quién soy?" },
-            { imagen: "img/Galeria/Imagen 4.jpg", nombre: "mono", pregunta: "¿Cuál es el animal juguetón que come bananas y salta en los árboles?" },
-            { imagen: "img/Galeria/Imagen 5.jpg", nombre: "jirafa", pregunta: "¿Tengo un cuello muy largo y soy el animal más alto del mundo. ¿Quién soy?" },
-            // Añade más preguntas aquí...
-        ];
 
-        // Referencias a elementos del juego
-        const imagenJuego = document.getElementById('imagen-juego');
-        const preguntaElement = document.getElementById('pregunta-animal');
-        const respuestaInput = document.getElementById('respuesta-usuario');
-        const btnVerificar = document.getElementById('btn-verificar');
-        const btnSiguiente = document.getElementById('btn-siguiente');
-        const retroalimentacionElement = document.getElementById('retroalimentacion');
-        const puntajeElement = document.getElementById('puntaje-actual');
-        const recordElement = document.getElementById('record-puntaje');
-
-        let indiceJuego = 0;
-        let puntajeActual = 0;
-
-        function cargarRecord() {
-            const record = localStorage.getItem('recordMundoAnimal');
-            recordElement.textContent = record || 0;
-        }
-
-        function iniciarJuego() {
-            // Reiniciar si llegamos al final de la lista
-            if (indiceJuego >= animales.length) {
-                alert(`¡Juego Terminado! Tu puntaje final fue: ${puntajeActual}`);
-                indiceJuego = 0; // Vuelve a la primera pregunta
-            }
-
-            const animalActual = animales[indiceJuego];
-            
-            // 1. Mostrar la pregunta e imagen
-            preguntaElement.textContent = animalActual.pregunta;
-            imagenJuego.src = animalActual.imagen;
-            
-            // 2. Resetear el estado de la interfaz
-            respuestaInput.value = '';
-            respuestaInput.disabled = false;
-            btnVerificar.classList.remove('hidden');
-            btnSiguiente.classList.add('hidden');
-            retroalimentacionElement.textContent = '';
-            retroalimentacionElement.className = 'text-lg font-bold pt-2 min-h-[1.5rem]'; // Limpia clases de color
-        }
-
-        function actualizarPuntaje(esCorrecto) {
-            if (esCorrecto) {
-                puntajeActual += 10; // Suma 10 puntos por acierto
-            } else {
-                // Opcional: penalizar o no hacer nada. Aquí no penalizamos.
-            }
-            puntajeElement.textContent = puntajeActual;
-
-            // Actualizar Récord
-            const recordActual = parseInt(localStorage.getItem('recordMundoAnimal')) || 0;
-            if (puntajeActual > recordActual) {
-                localStorage.setItem('recordMundoAnimal', puntajeActual);
-                recordElement.textContent = puntajeActual;
-            }
-        }
-
-
-        function verificarRespuesta() {
-            const respuesta = respuestaInput.value.trim().toLowerCase();
-            const nombreCorrecto = animales[indiceJuego].nombre.toLowerCase();
-
-            if (respuesta === nombreCorrecto) {
-                retroalimentacionElement.textContent = '¡Correcto! +10 puntos. 🎉';
-                retroalimentacionElement.classList.add('text-green-400');
-                
-                actualizarPuntaje(true); // Suma puntos
-                
-                respuestaInput.disabled = true;
-                btnVerificar.classList.add('hidden');
-                btnSiguiente.classList.remove('hidden');
-                
-            } else {
-                retroalimentacionElement.textContent = 'Respuesta incorrecta. Intenta de nuevo. 😥';
-                retroalimentacionElement.classList.add('text-red-400');
-            }
-        }
-
-        function siguientePregunta() {
-            indiceJuego++;
-            iniciarJuego();
-        }
-
-        // ==========================================================
-        // LÓGICA DEL CONTADOR DE VISITAS 👁️‍🗨️
-        // ==========================================================
-        function contarVisita() {
-            const contadorElement = document.getElementById('contador-visitas');
-            if (!contadorElement) return;
-
-            // Clave para el contador del manual
-            let visitas = localStorage.getItem('visitasManualMundoAnimal'); 
-
-            if (visitas === null || isNaN(parseInt(visitas))) {
-                visitas = 1;
-            } else {
-                visitas = parseInt(visitas) + 1;
-            }
-
-            localStorage.setItem('visitasManualMundoAnimal', visitas);
-            contadorElement.textContent = `Has consultado este manual: ${visitas} veces.`;
-        }
-
-        // ==========================================================
-        // EJECUCIÓN INICIAL
-        // ==========================================================
+        // Inicializar el carrusel y los puntos
         window.onload = function() {
-            // Inicializar Carrusel (Manual)
-            slidesContainer.style.display = 'flex';
+            slidesContainer.style.display = 'flex'; // Asegurar que sea flex para el translateX
+            // El width total del contenedor de slides debe ser el número de slides * 100%
             slidesContainer.style.width = `${totalSlides * 100}%`;
+            
+            // Aseguramos que cada diapositiva ocupe 1/N del ancho total del contenedor de diapositivas
             slides.forEach(slide => {
                 slide.style.width = `${100 / totalSlides}%`;
             });
+
             createDots();
-            updateCarousel(); 
-            
-            // Inicializar Juego
-            cargarRecord(); // Carga el puntaje más alto del usuario
-            iniciarJuego();
-            
-            // Inicializar Contador
-            contarVisita();
+            updateCarousel(); // Mostrar la primera diapositiva
         };
-
-        // Event Listeners del Juego
-        btnVerificar.addEventListener('click', verificarRespuesta);
-        btnSiguiente.addEventListener('click', siguientePregunta);
-
-        respuestaInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter' && !respuestaInput.disabled) {
-                verificarRespuesta();
-            }
-        });
+        // No se incluyó el Autoplay aquí, ya que podría ser molesto en un manual.
 
     </script>
 </body>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Juega online - Mundo Animal</title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/Mundo Animal.ico">
+    <meta name="description" content="juego online de Mundo Animal.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-image: url('MABG.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center center;
+            background-size: cover;
+            min-height: 100vh;
+        }
+
+        .content-bg {
+            background-color: rgba(0, 0, 0, 0.75);
+        }
+        
+        /* Estilo para la imagen del juego */
+        #imagen-juego {
+            /* max-height: 600px; - Eliminado ya que el padre tiene aspect-video */
+            width: 100%; /* Asegura que tome el 100% del contenedor */
+            height: 100%; /* Asegura que tome el 100% del contenedor */
+            object-fit: cover;
+            margin: 0 auto;
+            border-radius: 8px;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body class="text-white">
+
+    <div class="min-h-screen flex flex-col">
+
+        <nav class="bg-gray-900/80 p-4 shadow-lg sticky top-0 z-10">
+            <div class="flex flex-wrap justify-center space-x-2 sm:space-x-6 text-lg font-medium">
+                <a href="index.html" class="hover:text-green-400 transition duration-150 p-2 rounded-lg">Inicio</a>
+                <a href="Requisitos.html" class="hover:text-green-400 transition duration-150 p-2 rounded-lg">Requisitos</a>
+                <a href="manual.html" class="hover:text-green-400 transition duration-150 p-2 rounded-lg">Manual</a>
+                <a href="videos.html" class="hover:text-green-400 transition duration-150 p-2 rounded-lg">Videos</a>
+                <a href="Descargar.html" class="hover:text-green-400 transition duration-150 p-2 rounded-lg">Descargar</a>
+                <a href="contacto.html" class="hover:text-green-400 transition duration-150 p-2 rounded-lg">Contacto</a>
+                <a href="juego.html" class="text-green-400 font-bold border-b-2 border-green-400 p-2 rounded-lg">Juega</a>
+            </div>
+        </nav>
+
+        <main class="flex-grow p-4 sm:p-8 flex justify-center">
+            
+            <div class="content-bg max-w-5xl w-full p-6 md:p-10 rounded-2xl shadow-2xl space-y-8">
+                
+                <div class="text-center">
+                    <img src="img/logo final2.png" alt="Logo Mundo Animal" title="Mundo Animal" class="h-48 sm:h-64 w-auto mx-auto mb-4">
+                    <h1 class="text-4xl sm:text-5xl font-extrabold text-green-400 mb-2">
+                        Juega online
+                    </h1>
+                    <p class="text-xl text-gray-300">
+                        Descubre cómo empezar tu aventura en Mundo Animal.
+                    </p>
+                </div>
+
+                <hr class="border-gray-700 my-8">
+
+                <h2 class="text-3xl font-bold text-green-400 mt-12 mb-6 border-b border-gray-700 pb-2 text-center">
+                    ¡Pruébate! Adivina el Animal 🧠
+                </h2>
+
+                <div class="space-y-4 p-6 bg-gray-800/70 rounded-xl shadow-2xl text-center">
+                    <div class="flex justify-between items-center mb-4">
+                           <span class="text-lg font-semibold text-white">Puntaje: <span id="puntaje-actual" class="text-yellow-400 text-2xl">0</span></span>
+                           <span class="text-sm text-gray-400">Récord: <span id="record-puntaje">0</span></span>
+                    </div>
+
+                    <div id="contenedor-imagen-juego" class="w-full mx-auto aspect-video object-cover overflow-hidden rounded-lg">
+                        <img id="imagen-juego" src="" alt="Animal a adivinar" class="w-full h-full object-cover">
+                    </div>
+                    
+                    <p id="pregunta-animal" class="text-xl font-semibold text-green-300 pt-4">
+                           </p>
+                    
+                    <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-x-4 sm:space-y-0 mt-4">
+                        <input type="text" id="respuesta-usuario" placeholder="Escribe el nombre del animal aquí..."
+                                     class="p-3 w-full sm:w-80 rounded-lg text-gray-900 border border-green-500 focus:ring-2 focus:ring-green-400 focus:border-green-400 transition" autocomplete="off">
+                        
+                        <button id="btn-verificar"
+                                     class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 w-full sm:w-auto">
+                            Verificar
+                        </button>
+                    </div>
+
+                    <p id="retroalimentacion" class="text-lg font-bold pt-2 min-h-[1.5rem]">
+                           </p>
+                    
+                    <button id="btn-siguiente"
+                                     class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 hidden">
+                        Siguiente ➡️
+                    </button>
+                </div>
+                </div>
+
+        </main>
+
+        <footer class="text-center text-gray-400 text-sm p-4 bg-gray-900/80 mt-auto">
+            <div class="contenedor-footer">
+                <p>&copy; 2025 Mundo Animal S.A. Todos los derechos reservados.</p>
+                <p id="contador-visitas" class="mt-1"></p> 
+                <div class="mt-1 space-x-3">
+                    <a href="#" class="hover:text-green-400">Política de Privacidad</a>
+                    <span class="text-gray-600">|</span>
+                    <a href="#" class="hover:text-green-400">Términos de Uso</a>
+                    <span class="text-gray-600">|</span>
+                    <a href="contacto.html" class="hover:text-green-400">Contacto</a>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        // ==========================================================
+        // BASE DE DATOS Y LÓGICA DEL JUEGO 🎮
+        // ==========================================================
+        const animales = [
+            // RECUERDA: Reemplaza las etiquetas de imagen por tus rutas de archivo reales.
+            { imagen: "img/tigre.png", nombre: "tigre", pregunta: "¿Cuál es este felino rayado, conocido como el más grande del mundo?" },
+            { imagen: "img/elefante.png", nombre: "elefante", pregunta: "¿Quién tiene la trompa más larga y vive en la sabana?" },
+            { imagen: "img/pinguino.png", nombre: "pinguino", pregunta: "¿Soy un ave que no vuela y vivo en el frío, caminando torpemente. ¿Quién soy?" },
+            { imagen: "img/mono.png", nombre: "mono", pregunta: "¿Cuál es el animal juguetón que come bananas y salta en los árboles?" },
+            { imagen: "img/jirafa.png", nombre: "jirafa", pregunta: "¿Tengo un cuello muy largo y soy el animal más alto del mundo. ¿Quién soy?" },
+            { imagen: "img/leon.png", nombre: "leon", pregunta: "¿El rey de la selva con una gran melena. ¿Quién es?" },
+            { imagen: "img/delfin.png", nombre: "delfin", pregunta: "¿Soy un mamífero marino muy inteligente que salta sobre las olas. ¿Quién soy?" },
+            { imagen: "img/koala.png", nombre: "koala", pregunta: "¿Vivo en Australia, como hojas de eucalipto y duermo casi todo el día. ¿Quién soy?" },
+            { imagen: "img/serpiente.png", nombre: "serpiente", pregunta: "¿No tengo patas, me arrastro por el suelo y cambio mi piel. ¿Qué animal soy?" },
+            { imagen: "img/tiburon.png", nombre: "tiburon", pregunta: "¿Soy un depredador marino con muchos dientes y soy temido en el océano. ¿Quién soy?" },
+        ];
+
+        // Referencias a elementos del juego
+        const imagenJuego = document.getElementById('imagen-juego');
+        const preguntaElement = document.getElementById('pregunta-animal');
+        const respuestaInput = document.getElementById('respuesta-usuario');
+        const btnVerificar = document.getElementById('btn-verificar');
+        const btnSiguiente = document.getElementById('btn-siguiente');
+        const retroalimentacionElement = document.getElementById('retroalimentacion');
+        const puntajeElement = document.getElementById('puntaje-actual');
+        const recordElement = document.getElementById('record-puntaje');
+
+        let indiceJuego = 0;
+        let puntajeActual = 0;
+
+        function cargarRecord() {
+            const record = localStorage.getItem('recordMundoAnimal');
+            recordElement.textContent = record || 0;
+        }
+
+        function iniciarJuego() {
+            // Reordenar la lista si se llega al final
+            if (indiceJuego >= animales.length) {
+                // Comprobar si se ha batido el récord
+                const record = parseInt(localStorage.getItem('recordMundoAnimal')) || 0;
+                if (puntajeActual > record) {
+                    // Mueve el guardado del record aquí para que la alerta muestre el puntaje final correcto
+                    localStorage.setItem('recordMundoAnimal', puntajeActual);
+                    recordElement.textContent = puntajeActual;
+                    alert(`¡Juego Terminado! ¡Nuevo Récord de ${puntajeActual} puntos! 🎉`);
+                } else {
+                    alert(`¡Juego Terminado! Tu puntaje final fue: ${puntajeActual}.`);
+                }
+
+                // Reinicia el juego
+                puntajeActual = 0;
+                indiceJuego = 0; 
+                puntajeElement.textContent = puntajeActual;
+            }
+
+            const animalActual = animales[indiceJuego];
+            
+            // 1. Mostrar la pregunta e imagen
+            preguntaElement.textContent = animalActual.pregunta;
+            imagenJuego.src = animalActual.imagen; 
+            
+            // 2. Resetear el estado de la interfaz
+            respuestaInput.value = '';
+            respuestaInput.disabled = false;
+            btnVerificar.classList.remove('hidden');
+            btnSiguiente.classList.add('hidden');
+            retroalimentacionElement.textContent = '';
+            retroalimentacionElement.className = 'text-lg font-bold pt-2 min-h-[1.5rem]'; // Limpia clases de color
+        }
+
+        function actualizarPuntaje(esCorrecto) {
+            if (esCorrecto) {
+                puntajeActual += 10; // Suma 10 puntos por acierto
+            }
+            puntajeElement.textContent = puntajeActual;
+
+            // Actualizar Récord (Solo si el juego continúa, si se termina el juego se actualiza en iniciarJuego)
+            const recordActual = parseInt(localStorage.getItem('recordMundoAnimal')) || 0;
+            if (puntajeActual > recordActual) {
+                localStorage.setItem('recordMundoAnimal', puntajeActual);
+                recordElement.textContent = puntajeActual;
+            }
+        }
+
+        function verificarRespuesta() {
+            const respuesta = respuestaInput.value.trim().toLowerCase();
+            const nombreCorrecto = animales[indiceJuego].nombre.toLowerCase();
+
+            if (respuesta === nombreCorrecto) {
+                retroalimentacionElement.textContent = '¡Correcto! +10 puntos. 🎉';
+                retroalimentacionElement.classList.add('text-green-400');
+                retroalimentacionElement.classList.remove('text-red-400');
+                
+                actualizarPuntaje(true); // Suma puntos
+                
+                respuestaInput.disabled = true;
+                btnVerificar.classList.add('hidden');
+                btnSiguiente.classList.remove('hidden');
+                
+            } else {
+                retroalimentacionElement.textContent = 'Respuesta incorrecta. Intenta de nuevo. 😥';
+                retroalimentacionElement.classList.add('text-red-400');
+                retroalimentacionElement.classList.remove('text-green-400');
+            }
+        }
+
+        function siguientePregunta() {
+            indiceJuego++;
+            iniciarJuego();
+        }
+
+        // ==========================================================
+        // LÓGICA DEL CONTADOR DE VISITAS 👁️‍🗨️
+        // ==========================================================
+        function contarVisita() {
+            const contadorElement = document.getElementById('contador-visitas');
+            if (!contadorElement) return;
+
+            // CLAVE CORREGIDA: Usa una clave específica para la página del juego.
+            let visitas = localStorage.getItem('visitasJuegoMundoAnimal'); 
+
+            if (visitas === null || isNaN(parseInt(visitas))) {
+                visitas = 1;
+            } else {
+                visitas = parseInt(visitas) + 1;
+            }
+
+            localStorage.setItem('visitasJuegoMundoAnimal', visitas);
+            contadorElement.textContent = `Has visitado esta página: ${visitas} veces.`;
+        }
+
+        // ==========================================================
+        // EJECUCIÓN INICIAL
+        // ==========================================================
+        window.onload = function() {
+            
+            // Inicializar Juego
+            cargarRecord(); // Carga el puntaje más alto del usuario
+            iniciarJuego();
+            
+            // Inicializar Contador
+            contarVisita();
+        };
+
+        // Event Listeners del Juego
+        btnVerificar.addEventListener('click', verificarRespuesta);
+        btnSiguiente.addEventListener('click', siguientePregunta);
+
+        respuestaInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                if (!respuestaInput.disabled) {
+                    verificarRespuesta();
+                } else if (btnSiguiente.classList.contains('hidden') === false) {
+                     // Si presiona Enter y ya respondió correctamente (botón Siguiente visible)
+                    siguientePregunta();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
